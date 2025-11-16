@@ -765,3 +765,14 @@ main {
   object-fit: cover;
   border-radius: inherit;
 }
+/* Contact links in roze ipv groen */
+.contact-link {
+  font-size: 0.96rem;
+  text-decoration: none;
+  color: #ff6fd8; /* roze */
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+  color: #ffd8f4; /* iets lichtere roze bij hover */
+}

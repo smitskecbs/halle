@@ -776,3 +776,47 @@ main {
   text-decoration: underline;
   color: #ffd8f4; /* iets lichtere roze bij hover */
 }
+/* ===== Halle overrides ===== */
+
+/* Kop en navigatie in roze in plaats van groen */
+.site-header .brand-name,
+.site-header .brand-tagline,
+.nav .nav-link {
+  color: #ff75c8;          /* zacht roze */
+}
+
+/* Active / hover nav ook roze */
+.nav .nav-link.active,
+.nav .nav-link:hover {
+  color: #ff9adb;
+}
+
+/* Banner styling */
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-banner img {
+  width: 100%;
+  max-width: 980px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 22px;
+  box-shadow: 0 0 30px rgba(255, 117, 200, 0.45);
+}
+
+/* Pillen die links zijn */
+.hero-tags .tag-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Mobiel: alles netjes onder elkaar */
+@media (min-width: 900px) {
+  .hero-inner {
+    flex-direction: row;
+    align-items: center;
+  }
+}

@@ -6,12 +6,15 @@
   --bg-main: #050714;
   --bg-main-soft: #090c1c;
   --bg-alt: #0d1022;
+
   --accent-pink: #ff6fd8;
   --accent-purple: #8f7bff;
-  --accent-teal: #3cf2d1;
-  --text-main: #f4f5ff;
-  --text-soft: #c3c7f5;
-  --text-muted: #8b90c7;
+  --accent-teal: #3cf2d1; /* alleen voor glow, niet meer voor tekst */
+
+  --text-main: #ffffff;   /* gewone tekst = wit */
+  --text-soft: #ffffff;   /* alles wat eerder soft was ook wit */
+  --text-muted: #f6b5e8;  /* kleine labels in zachte roze tint */
+
   --border-soft: rgba(255, 255, 255, 0.08);
   --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
   --radius-lg: 18px;
@@ -103,26 +106,6 @@ body {
   gap: 12px;
 }
 
-.brand-mark {
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 1.1rem;
-  color: #050714;
-  background: conic-gradient(from 180deg,
-    var(--accent-pink),
-    var(--accent-purple),
-    var(--accent-teal),
-    var(--accent-pink));
-  box-shadow:
-    0 0 12px rgba(255, 111, 216, 0.6),
-    0 0 40px rgba(143, 123, 255, 0.45);
-}
-
 .brand-text {
   display: flex;
   flex-direction: column;
@@ -134,11 +117,32 @@ body {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 0.98rem;
+  color: var(--accent-pink);
 }
 
 .brand-tagline {
   font-size: 0.78rem;
-  color: var(--text-muted);
+  color: var(--accent-pink);
+}
+
+/* kleine ronde avatar indien gebruikt */
+.brand-mark.brand-mark--avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 0;
+  background: linear-gradient(135deg, #f8e3a4, #d7aa4a);
+  overflow: hidden;
+  box-shadow:
+    0 0 10px rgba(215, 170, 74, 0.7),
+    0 0 18px rgba(0, 0, 0, 0.8);
+}
+
+.brand-mark.brand-mark--avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
 }
 
 /* Nav */
@@ -174,7 +178,7 @@ body {
   position: relative;
   font-size: 0.9rem;
   text-decoration: none;
-  color: var(--text-soft);
+  color: var(--accent-pink);
   padding: 6px 10px;
   border-radius: var(--radius-pill);
   transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
@@ -194,7 +198,7 @@ body {
 }
 
 .nav-link:hover {
-  color: #ffffff;
+  color: #ffd8f4;
   background: radial-gradient(circle at top, rgba(255, 111, 216, 0.18), rgba(5, 7, 20, 0));
   transform: translateY(-1px);
 }
@@ -261,12 +265,34 @@ main {
   margin: 0 0 8px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  color: var(--accent-pink);
 }
 
 .section-header p {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--text-soft);
+  color: var(--text-main);
+}
+
+/* =========================
+   TOP BANNER
+========================= */
+
+.section-banner {
+  padding-top: 24px;
+  padding-bottom: 12px;
+}
+
+.banner-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.banner-image {
+  width: 100%;
+  display: block;
+  border-radius: 22px;
+  box-shadow: 0 0 30px rgba(255, 117, 200, 0.45);
 }
 
 /* =========================
@@ -290,7 +316,7 @@ main {
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 0.72rem;
-  color: var(--accent-teal);
+  color: var(--accent-pink);   /* was groen, nu roze */
   margin: 0 0 12px;
 }
 
@@ -298,11 +324,12 @@ main {
   font-size: clamp(2rem, 3vw, 2.6rem);
   line-height: 1.1;
   margin: 0 0 12px;
+  color: var(--accent-pink);
 }
 
 .hero-highlight {
   display: block;
-  background: linear-gradient(120deg, var(--accent-pink), var(--accent-purple), var(--accent-teal));
+  background: linear-gradient(120deg, var(--accent-pink), var(--accent-purple));
   -webkit-background-clip: text;
   color: transparent;
   text-shadow: 0 0 18px rgba(255, 111, 216, 0.5);
@@ -311,7 +338,7 @@ main {
 .hero-subtitle {
   margin: 0 0 18px;
   font-size: 0.96rem;
-  color: var(--text-soft);
+  color: var(--text-main);
 }
 
 .hero-tags {
@@ -329,7 +356,13 @@ main {
   background: radial-gradient(circle at top left,
       rgba(255, 111, 216, 0.12),
       rgba(5, 7, 20, 0.9));
-  color: var(--text-soft);
+  color: var(--text-main);
+}
+
+/* klikbare pillen */
+.hero-tags .tag-link {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* Buttons */
@@ -376,7 +409,7 @@ main {
 .btn-outline {
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: rgba(5, 7, 20, 0.85);
-  color: var(--text-soft);
+  color: var(--accent-pink);
 }
 
 .btn-outline:hover {
@@ -415,8 +448,6 @@ main {
   z-index: -1;
 }
 
-/* Avatar circle (use halle.jpg als bg) */
-
 .hero-avatar {
   display: flex;
   justify-content: center;
@@ -436,17 +467,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  font-size: 1.2rem;
-  color: #050714;
   background-clip: padding-box;
   position: relative;
   overflow: hidden;
 }
 
-/* Als je halle.jpg direct wilt tonen:
-   vervang de "HV" in HTML door een <img>, die wordt zo gestyled */
 .avatar-circle img {
   width: 100%;
   height: 100%;
@@ -465,7 +490,7 @@ main {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--accent-teal);
+  color: var(--accent-pink);   /* geen groen meer */
   margin: 0 0 8px;
 }
 
@@ -473,7 +498,7 @@ main {
   margin: 0 0 10px 1.1em;
   padding: 0;
   font-size: 0.9rem;
-  color: var(--text-soft);
+  color: var(--text-main);
 }
 
 .hero-list li {
@@ -497,7 +522,7 @@ main {
   border: 1px solid var(--border-soft);
   box-shadow: var(--shadow-soft);
   font-size: 0.96rem;
-  color: var(--text-soft);
+  color: var(--text-main);
 }
 
 .card--about p + p {
@@ -534,13 +559,13 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
   font-size: 0.9rem;
-  color: var(--text-soft);
+  color: var(--text-main);
 }
 
 .role-card h3 {
   margin: 0 0 8px;
   font-size: 1rem;
-  color: #ffffff;
+  color: var(--accent-pink);
 }
 
 .role-card p {
@@ -564,7 +589,7 @@ main {
   padding: 18px 18px 16px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   font-size: 0.9rem;
-  color: var(--text-soft);
+  color: var(--text-main);
   box-shadow: 0 18px 46px rgba(0, 0, 0, 0.85);
 }
 
@@ -592,6 +617,21 @@ main {
 }
 
 /* =========================
+   Testimonials
+========================= */
+
+.quote {
+  font-size: 0.92rem;
+  color: var(--text-main);
+}
+
+.quote-author {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* =========================
    Contact
 ========================= */
 
@@ -602,7 +642,7 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: var(--shadow-soft);
   font-size: 0.92rem;
-  color: var(--text-soft);
+  color: var(--text-main);
   max-width: 520px;
   margin: 0 auto;
 }
@@ -621,14 +661,25 @@ main {
   margin-bottom: 4px;
 }
 
+/* links overal roze */
+a {
+  color: var(--accent-pink);
+}
+
+a:hover {
+  color: #ffd8f4;
+}
+
+/* Contact links in roze */
 .contact-link {
   font-size: 0.96rem;
   text-decoration: none;
-  color: var(--accent-teal);
+  color: var(--accent-pink);
 }
 
 .contact-link:hover {
   text-decoration: underline;
+  color: #ffd8f4;
 }
 
 .contact-note {
@@ -744,79 +795,5 @@ main {
   .btn {
     font-size: 0.84rem;
     padding-inline: 14px;
-  }
-}
-/* Brand avatar in header - kleiner maken */
-.brand-mark.brand-mark--avatar {
-  width: 30px;   /* was groter, nu kleiner */
-  height: 30px;
-  border-radius: 50%;
-  padding: 0;
-  background: linear-gradient(135deg, #f8e3a4, #d7aa4a);
-  overflow: hidden;
-  box-shadow:
-    0 0 10px rgba(215, 170, 74, 0.7),
-    0 0 18px rgba(0, 0, 0, 0.8);
-}
-
-.brand-mark.brand-mark--avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
-}
-/* Contact links in roze ipv groen */
-.contact-link {
-  font-size: 0.96rem;
-  text-decoration: none;
-  color: #ff6fd8; /* roze */
-}
-
-.contact-link:hover {
-  text-decoration: underline;
-  color: #ffd8f4; /* iets lichtere roze bij hover */
-}
-/* ===== Halle overrides ===== */
-
-/* Kop en navigatie in roze in plaats van groen */
-.site-header .brand-name,
-.site-header .brand-tagline,
-.nav .nav-link {
-  color: #ff75c8;          /* zacht roze */
-}
-
-/* Active / hover nav ook roze */
-.nav .nav-link.active,
-.nav .nav-link:hover {
-  color: #ff9adb;
-}
-
-/* Banner styling */
-.hero-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.hero-banner img {
-  width: 100%;
-  max-width: 980px;
-  display: block;
-  margin: 0 auto;
-  border-radius: 22px;
-  box-shadow: 0 0 30px rgba(255, 117, 200, 0.45);
-}
-
-/* Pillen die links zijn */
-.hero-tags .tag-link {
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Mobiel: alles netjes onder elkaar */
-@media (min-width: 900px) {
-  .hero-inner {
-    flex-direction: row;
-    align-items: center;
   }
 }

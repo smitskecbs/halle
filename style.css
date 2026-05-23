@@ -386,12 +386,6 @@ main {
   transform: none;
 }
 
-.hero-profile-visual.roles-orbit {
-  min-height: 0;
-  display: block;
-  padding-inline: 0;
-}
-
 .availability-copy {
   width: 100%;
   max-width: 520px;
@@ -1059,17 +1053,16 @@ main {
     padding: 0;
   }
 
+  .hero-profile-visual {
+    padding-inline: 0;
+  }
+
   .roles-orbit {
-    width: 360px;
+    width: min(86vw, 360px);
     max-width: 92vw;
     height: 420px;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .hero-profile-visual.roles-orbit {
-    min-height: 0;
-    padding-inline: 0;
   }
 
   .avatar-wrap {
